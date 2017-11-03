@@ -1,0 +1,41 @@
+- id: docs.ipfs.io
+  execute-command: ./deploy.sh
+  command-working-directory: /opt/hook
+  include-command-output-in-response: true
+  pass-environment-to-command:
+    - source: header
+      name: X-GitHub-Delivery
+      envname: DELIVERY
+    - source: string
+      name: https://github.com/ipfs/docs.git
+      envname: REPO
+    - source: payload
+      name: after
+      envname: COMMIT
+    - source: string
+      name: docs.ipfs.li
+      envname: DOMAIN
+    # - source: string
+    #   name: super-secret
+    #   envname: DNSIMPLE_TOKEN
+  trigger-rule-mismatch-http-response-code: 403
+  trigger-rule:
+    and:
+      - match:
+          type: payload-hash-sha1
+          secret: super-secret
+          parameter:
+            source: header
+            name: X-Hub-Signature
+      - match:
+          type: value
+          value: push
+          parameter:
+            source: header
+            name: X-GitHub-Event
+      - match:
+          type: value
+          value: refs/heads/master
+          parameter:
+            source: payload
+            name: ref
