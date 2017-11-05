@@ -23,7 +23,7 @@
     and:
       - match:
           type: payload-hash-sha1
-          secret: super-secret
+          secret: 013946d56ce470d3ad3003fa8d694fa120a8ffac375c6cd8d1590bfc348a0e0d
           parameter:
             source: header
             name: X-Hub-Signature
