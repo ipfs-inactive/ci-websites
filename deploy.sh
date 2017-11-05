@@ -4,7 +4,7 @@ set -e
 env | grep DELIVERY
 
 rm -rf "$DOMAIN/$DELIVERY/"
-mkdir "$DOMAIN"
+mkdir -p "$DOMAIN"
 
 git clone "$REPO" "$DOMAIN/$DELIVERY"
 cd "$DOMAIN/$DELIVERY/"
