@@ -1,4 +1,4 @@
-- id: docs.ipfs.io
+- id: 8f6cafc9a4ab4f97bda19ec39071437f2b43f8fdcb4839dda2d9a9246f2c571e
   execute-command: ./deploy.sh
   command-working-directory: /opt/hook
   include-command-output-in-response: true
