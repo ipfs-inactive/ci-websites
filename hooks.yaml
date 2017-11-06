@@ -13,7 +13,7 @@
       name: after
       envname: COMMIT
     - source: string
-      name: docs.ipfs.li
+      name: docsdev.ipfs.team
       envname: DOMAIN
     # - source: string
     #   name: super-secret
