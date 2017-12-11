@@ -4,10 +4,16 @@ MAINTAINER Lars Gierth <lgierth@ipfs.io>
 ENV IPFS_API /ip4/127.0.0.1/tcp/5001
 ENV DNSIMPLE_TOKEN ""
 
-ENV IPFS_VERSION 0.4.12-rc1
-ENV HUGO_VERSION 0.30.2
+ENV IPFS_VERSION 0.4.13
+ENV HUGO_VERSION 0.31.1
 
-EXPOSE 9000
+# Install nodejs and npm
+RUN set -ex && \
+  wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+  echo "deb http://deb.nodesource.com/node_8.x stretch main" >> /etc/apt/sources.list.d/nodesource.list && \
+  echo "deb-src http://deb.nodesource.com/node_8.x stretch main" >> -a /etc/apt/sources.list.d/nodesource.list && \
+  apt-get update && \
+  apt-get install -y nodejs build-essential
 
 # Install hugo
 RUN set -ex && \
@@ -21,13 +27,10 @@ RUN set -ex && \
   tar -xf go-ipfs_v${IPFS_VERSION}_linux-amd64.tar.gz && \
   mv go-ipfs/ipfs /usr/bin/ipfs
 
-# These are exactly here so that a change to them triggers a new `go get`.
-COPY hooks.yaml /etc/hooks.yaml
-COPY deploy.sh /opt/hook/deploy.sh
-
-# Install webhook and dnslink-dnsimple
+# Install aegir, godoc2md, dnslink-dnsimple
 RUN set -ex && \
-  go get -v github.com/adnanh/webhook && \
-  go get -v github.com/lgierth/dnslink-dnsimple
+  npm install -g aegir && \
+  go get -v github.com/lgierth/dnslink-dnsimple && \
+  go get -v github.com/davecheney/godoc2md
 
-CMD ["webhook", "-hooks", "/etc/hooks.yaml", "-port", "9000", "-verbose"]
+VOLUME /site
