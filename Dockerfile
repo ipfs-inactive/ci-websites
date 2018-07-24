@@ -29,7 +29,7 @@ RUN set -ex && \
 
 # Install aegir, godoc2md, dnslink-dnsimple
 RUN set -ex && \
-  npm install -g aegir && \
+  npm install -g aegir@12.4.0 yarn@1.3.2 && \
   go get -v github.com/lgierth/dnslink-dnsimple && \
   go get -v github.com/davecheney/godoc2md
 
