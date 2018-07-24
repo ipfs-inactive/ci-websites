@@ -5,7 +5,7 @@ ENV IPFS_API /ip4/127.0.0.1/tcp/5001
 ENV DNSIMPLE_TOKEN ""
 
 ENV IPFS_VERSION 0.4.13
-ENV HUGO_VERSION 0.31.1
+ENV HUGO_VERSION 0.41
 
 # Install nodejs and npm
 RUN set -ex && \
