@@ -27,9 +27,8 @@ RUN set -ex && \
   tar -xf go-ipfs_v${IPFS_VERSION}_linux-amd64.tar.gz && \
   mv go-ipfs/ipfs /usr/bin/ipfs
 
-# Install aegir, godoc2md, dnslink-dnsimple
+# Install godoc2md, dnslink-dnsimple
 RUN set -ex && \
-  npm install -g aegir && \
   go get -v github.com/lgierth/dnslink-dnsimple && \
   go get -v github.com/davecheney/godoc2md
 
