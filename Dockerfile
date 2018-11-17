@@ -13,7 +13,7 @@ RUN set -ex && \
   echo "deb http://deb.nodesource.com/node_8.x stretch main" >> /etc/apt/sources.list.d/nodesource.list && \
   echo "deb-src http://deb.nodesource.com/node_8.x stretch main" >> -a /etc/apt/sources.list.d/nodesource.list && \
   apt-get update && \
-  apt-get install -y nodejs build-essential libpng-dev
+  apt-get install -y nodejs build-essential libpng-dev jq
 
 # Install hugo
 RUN set -ex && \
