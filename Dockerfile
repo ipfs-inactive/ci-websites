@@ -1,17 +1,17 @@
-FROM golang:1.9-stretch
+FROM golang:1.12.9-buster
 MAINTAINER Lars Gierth <lgierth@ipfs.io>
 
 ENV IPFS_API /ip4/127.0.0.1/tcp/5001
 ENV DNSIMPLE_TOKEN ""
 
-ENV IPFS_VERSION 0.4.13
+ENV IPFS_VERSION 0.4.22
 ENV HUGO_VERSION 0.31.1
 
 # Install nodejs and npm
 RUN set -ex && \
   wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo "deb http://deb.nodesource.com/node_8.x stretch main" >> /etc/apt/sources.list.d/nodesource.list && \
-  echo "deb-src http://deb.nodesource.com/node_8.x stretch main" >> -a /etc/apt/sources.list.d/nodesource.list && \
+  echo "deb http://deb.nodesource.com/node_12.x buster main" >> /etc/apt/sources.list.d/nodesource.list && \
+  echo "deb-src http://deb.nodesource.com/node_12.x buster main" >> -a /etc/apt/sources.list.d/nodesource.list && \
   apt-get update && \
   apt-get install -y nodejs build-essential libpng-dev
 
