@@ -6,6 +6,7 @@ ENV DNSIMPLE_TOKEN ""
 
 ENV IPFS_VERSION 0.4.22
 ENV HUGO_VERSION 0.31.1
+ENV GO111MODULE=on
 
 # Install nodejs and npm
 RUN set -ex && \
@@ -33,7 +34,7 @@ RUN set -ex && \
 
 # Install godoc2md, dnslink-dnsimple
 RUN set -ex && \
-  go get -v github.com/lgierth/dnslink-dnsimple && \
-  go get -v github.com/davecheney/godoc2md
+  go install github.com/ipfs/dnslink-dnsimple && \
+  go install github.com/davecheney/godoc2md
 
 VOLUME /site
