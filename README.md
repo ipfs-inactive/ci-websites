@@ -4,7 +4,7 @@
 
 [![CircleCI](https://circleci.com/gh/ipfs/ci-websites.svg?style=svg)](https://circleci.com/gh/ipfs/ci-websites)
 
-Has Go and JS installed.
+Has Go and JS installed. Used by https://github.com/ipfs/docs
 
 ```console
 # build the image
